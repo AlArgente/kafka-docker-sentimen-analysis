@@ -1,0 +1,32 @@
+# Requirements:
+# Have docker installed in the local machine
+# Have docker-compose installed in the local machine
+# Download kafka-docker to local
+git clone https://github.com/wurstmeister/kafka-docker.git
+
+# Go to the folder
+cd kafka-docker/
+
+# Edit the docker-compose.yml file with the file in this repository.
+
+# After editing the docker-compose.yml, launch the Kafka-docker
+docker-compose up -d
+
+# To check if kafka is initialized:
+docker-compose logs kafka | grep started
+
+# Other way to check if kafka is initialized is using Kafka GUI Tool
+# To download the tool go to: https://www.kafkatool.com/download.html
+
+# Once we have kafka on, we can use it as if we had it installed in our machine
+# and we can use the same producer.py and consumer.py from this repository.
+# To use this producer and consumer we have to change the ports in the files
+# In this case, we have to change localhost:9092 to localhost:29092 in both 
+# producer.py and consumer.py
+# Once we've updated the files, we can just run the scripts:
+# Produce into KafkaDocker
+python3 producer.py 
+# Consume from KafkaDocker
+python3 consumer.py
+
+# Next step is to use producer and consumer as docker images.
